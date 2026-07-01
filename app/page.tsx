@@ -1,6 +1,6 @@
 "use client";
 import { useState } from 'react';
-import Image from '@/app/components/CustomImage';
+import Image from './components/CustomImage';
 import { ProductSpecs } from './components/ProductSpecs';
 import { productData } from './data/product';
 
@@ -30,7 +30,7 @@ export default function ProductPage() {
 <div className="flex flex-col gap-6">
     
     {/* メイン画像：横長に最適化 */}
-		<div className="relative w-full aspect-video bg-white border border-slate-200 rounded-xl overflow-hidden flex items-center justify-center">
+<div className="relative w-full aspect-video bg-white border border-slate-200 rounded-xl overflow-hidden flex items-center justify-center">
           <Image 
             src={activeImage} 
             alt="main" 
@@ -41,7 +41,7 @@ export default function ProductPage() {
 
 
     {/* サムネイル：横1列に配置 */}
-		<div className="relative z-10 grid grid-cols-4 sm:grid-cols-6 gap-2">
+		<div className="grid grid-cols-4 sm:grid-cols-6 gap-2">
 		{allImages.map((img, i) => (
 			<button 
 			key={i} 
@@ -74,30 +74,20 @@ export default function ProductPage() {
   <p className="text-red-600 text-3xl font-bold">¥3,980</p>
 
   {/* カラー選択 */}
-<div className="flex gap-2">
-  {productData.variations.map((v) => {
-    const isSelected = activeImage === v.image;
-    
-    // カラーに応じたスタイル
-    const baseStyle = "px-4 py-2 text-sm md:px-6 md:py-3 md:text-base border-2 transition-all";
-    const shapeStyle = "rounded-lg md:rounded-full"; // スマホでは角丸を抑えめに
-    const colorStyles = isSelected 
-      ? (v.color === "ホワイト" ? "bg-white border-orange-500" : "bg-slate-800 border-orange-500 text-white")
-      : "bg-white border-slate-200";
-
-    return (
-      <button 
-        type="button"
-        key={v.color} 
-        onClick={() => setActiveImage(v.image)} 
-        className={`${baseStyle} ${shapeStyle} ${colorStyles} active:scale-95 active:opacity-70`}
-      >
-        {v.color}
-      </button>
-    );
-  })}
-</div>
-
+  <div className="space-y-2">
+    <p className="font-semibold">カラー</p>
+    <div className="flex gap-2">
+      {productData.variations.map((v) => (
+        <button 
+          key={v.color} 
+          onClick={() => setActiveImage(v.image)} 
+          className="border px-4 py-2 rounded hover:bg-slate-50 transition"
+        >
+          {v.color}
+        </button>
+      ))}
+    </div>
+  </div>
 
   {/* 購入アクション */}
   <div className="flex flex-col gap-3">
