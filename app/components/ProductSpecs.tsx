@@ -1,4 +1,3 @@
-// app/components/ProductSpecs.tsx
 import { productData } from '../data/product';
 
 export const ProductSpecs = () => {

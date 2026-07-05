@@ -1,4 +1,3 @@
-// components/Footer.tsx
 import Link from 'next/link';
 
 export default function Footer() {
@@ -6,7 +5,6 @@ export default function Footer() {
     <footer className="bg-slate-50 border-t border-slate-200 py-12 mt-12">
       <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
         
-        {/* ブランド紹介 */}
         <div className="space-y-3">
           <h2 className="text-lg font-bold tracking-tighter">GEAR PULSE</h2>
           <p className="text-sm text-slate-500 leading-relaxed">
@@ -14,7 +12,6 @@ export default function Footer() {
           </p>
         </div>
 
-        {/* リンク集 */}
         <div className="space-y-3">
           <h3 className="font-semibold text-slate-900">SHOP</h3>
           <ul className="space-y-2 text-sm text-slate-600">
@@ -23,7 +20,6 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* サポート・規約 */}
         <div className="space-y-3">
           <h3 className="font-semibold text-slate-900">SUPPORT</h3>
           <ul className="space-y-2 text-sm text-slate-600">
@@ -34,7 +30,6 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* コピーライト */}
       <div className="max-w-6xl mx-auto px-4 mt-12 pt-8 border-t text-center text-xs text-slate-400">
         &copy; 2026 GEAR PULSE All rights reserved.
       </div>

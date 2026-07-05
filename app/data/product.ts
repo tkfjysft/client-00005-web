@@ -1,7 +1,6 @@
 export const productData = {
   title: "VOLTSPEED 65W GaN 急速充電器",
   description: "次世代のGaN技術を採用し、コンパクトながらパワフルな給電を実現。デスク周りをスッキリさせる必須アイテムです。",
-  // ギャラリーに表示する全画像
   gallery: [
     "/images/product-scenery.webp",
     "/images/product-appearance_tr.webp",
