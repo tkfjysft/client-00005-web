@@ -13,11 +13,11 @@ export const productData = {
   variations: [
     { color: "ホワイト", image: "/images/product-clr-white_tr.webp" },
     { color: "ブラック", image: "/images/product-clr-black_tr.webp" },
-    { color: "スペースグレー", image: "/images/product-clr-gray_tr.webp" },
+    { color: "グレー", image: "/images/product-clr-gray_tr.webp" },
   ],
   specs: [
     { label: "出力", value: "最大 65W" },
-    { label: "ポート", value: "USB-C x 2, USB-A x 1" },
+    { label: "ポート", value: "USB-C x 1" },
     { label: "重量", value: "約 120g" },
     { label: "サイズ", value: "53 x 43 x 28 mm" },
   ],

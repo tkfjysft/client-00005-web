@@ -30,8 +30,9 @@ export default function ProductPage() {
 <div className="flex flex-col gap-6">
     
     {/* メイン画像：横長に最適化 */}
-<div className="sticky top-4 z-10 bg-white shadow-sm rounded-xl overflow-hidden">
-        <div className="relative w-full aspect-video flex items-center justify-center">          <Image 
+<div className="sticky md:relative top-4 z-10 bg-white shadow-sm rounded-xl overflow-hidden">
+        <div className="relative w-full aspect-video flex items-center justify-center">
+		<Image 
             src={activeImage} 
             alt="main" 
             fill 
@@ -48,7 +49,7 @@ export default function ProductPage() {
 			key={i} 
 			onClick={() => setActiveImage(img)} 
 			// 選択中のサムネイルに枠線を付ける
-			className={`border rounded-md overflow-hidden aspect-square ${activeImage === img ? 'ring-2 ring-orange-500' : 'hover:border-slate-400'}`}
+			className={`border rounded-md overflow-hidden aspect-square ${activeImage === img ? 'ring-2 ring-sky-500' : 'hover:border-slate-400'}`}
 			>
 			<Image 
 				src={img} 
@@ -72,7 +73,7 @@ export default function ProductPage() {
     <p className="mt-2 text-slate-600">{productData.description}</p>
   </div>
 
-  <p className="text-red-600 text-3xl font-bold">¥3,980</p>
+  <p className="text-gray-700 text-3xl font-bold">¥3,980</p>
 
 {/* カラー選択 */}
   <div className="space-y-2">
@@ -83,7 +84,7 @@ export default function ProductPage() {
         const colorMap: Record<string, string> = {
           'ブラック': '#1e293b',
           'ホワイト': '#f8fafc',
-          'シルバー': '#94a3b8',
+          'グレー': '#829196',
           // ここに実際のデータにある色名と色を追加してください
         };
         
@@ -95,12 +96,12 @@ export default function ProductPage() {
             key={v.color} 
             onClick={() => setActiveImage(v.image)} 
             className={`
-              px-4 py-2 rounded-full border-2 transition-all duration-200
-              ${isSelected ? 'ring-2 ring-offset-2 ring-orange-500 scale-105' : 'hover:scale-105 border-slate-200'}
+              taxt-base px-2 py-2 mr-2 rounded-2xl border-2 transition-all duration-200
+              ${isSelected ? 'ring-2 ring-offset-2 ring-sky-500 scale-105' : 'hover:scale-105 border-slate-200'}
             `}
             style={{ 
               backgroundColor: bgColor,
-              color: isSelected ? 'white' : (v.color === 'ブラック' ? 'white' : 'black'),
+              color: v.color === 'ホワイト' ? 'black' : 'white',
               borderColor: isSelected ? 'transparent' : '#e2e8f0'
             }}
           >
@@ -113,10 +114,10 @@ export default function ProductPage() {
 
   {/* 購入アクション */}
   <div className="flex flex-col gap-3">
-    <button className="w-full bg-orange-400 text-white py-4 rounded-full font-bold text-lg hover:bg-orange-500 transition">
+    <button className="w-full bg-sky-400 text-white py-4 rounded-full font-bold text-lg hover:bg-sky-500 transition">
       カートに入れる
     </button>
-    <button className="w-full bg-slate-800 text-white py-4 rounded-full font-bold text-lg hover:bg-slate-900 transition">
+    <button className="w-full bg-slate-600 text-white py-4 rounded-full font-bold text-lg hover:bg-slate-900 transition">
       今すぐ購入
     </button>
   </div>
