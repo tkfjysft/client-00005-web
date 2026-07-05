@@ -5,4 +5,5 @@ const nextConfig: NextConfig = {
   basePath: "/f",
 };
 
+
 export default nextConfig;
