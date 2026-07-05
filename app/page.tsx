@@ -30,14 +30,15 @@ export default function ProductPage() {
 <div className="flex flex-col gap-6">
     
     {/* メイン画像：横長に最適化 */}
-<div className="relative w-full aspect-video bg-white border border-slate-200 rounded-xl overflow-hidden flex items-center justify-center">
-          <Image 
+<div className="sticky top-4 z-10 bg-white shadow-sm rounded-xl overflow-hidden">
+        <div className="relative w-full aspect-video flex items-center justify-center">          <Image 
             src={activeImage} 
             alt="main" 
             fill 
             className={`${isTransparent(activeImage) ? 'object-contain p-8' : 'object-cover'} w-full h-full transition-all duration-300`} 
           />
         </div>
+		</div>
 
 
     {/* サムネイル：横1列に配置 */}
@@ -73,19 +74,40 @@ export default function ProductPage() {
 
   <p className="text-red-600 text-3xl font-bold">¥3,980</p>
 
-  {/* カラー選択 */}
+{/* カラー選択 */}
   <div className="space-y-2">
     <p className="font-semibold">カラー</p>
     <div className="flex gap-2">
-      {productData.variations.map((v) => (
-        <button 
-          key={v.color} 
-          onClick={() => setActiveImage(v.image)} 
-          className="border px-4 py-2 rounded hover:bg-slate-50 transition"
-        >
-          {v.color}
-        </button>
-      ))}
+      {productData.variations.map((v) => {
+        // 色名に対応するカラーコードを辞書で定義
+        const colorMap: Record<string, string> = {
+          'ブラック': '#1e293b',
+          'ホワイト': '#f8fafc',
+          'シルバー': '#94a3b8',
+          // ここに実際のデータにある色名と色を追加してください
+        };
+        
+        const isSelected = activeImage === v.image;
+        const bgColor = colorMap[v.color] || '#e2e8f0'; // マッピングがない場合はグレー
+
+        return (
+          <button 
+            key={v.color} 
+            onClick={() => setActiveImage(v.image)} 
+            className={`
+              px-4 py-2 rounded-full border-2 transition-all duration-200
+              ${isSelected ? 'ring-2 ring-offset-2 ring-orange-500 scale-105' : 'hover:scale-105 border-slate-200'}
+            `}
+            style={{ 
+              backgroundColor: bgColor,
+              color: isSelected ? 'white' : (v.color === 'ブラック' ? 'white' : 'black'),
+              borderColor: isSelected ? 'transparent' : '#e2e8f0'
+            }}
+          >
+            {v.color}
+          </button>
+        );
+      })}
     </div>
   </div>
 
